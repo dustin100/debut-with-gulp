@@ -1,6 +1,8 @@
-<div class="page-width feature-row">
-  {% capture image_layout %}
-    <div class="feature-row__item">
+
+
+<section class = "fnd-feature-row">
+  <div class="row {% if section.settings.layout != 'left' %} r-row {% endif %} ">
+    <div class="small-12 medium-6 columns">
       {% if section.settings.image != blank %}
         {% capture img_id %}FeatureRowImage-{{ section.id }}{% endcapture %}
         {% capture wrapper_id %}FeatureRowImageWrapper-{{ section.id }}{% endcapture %}
@@ -9,12 +11,12 @@
         <div id="{{ wrapper_id }}" class="feature-row__image-wrapper js">
           <div style="padding-top:{{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100}}%;" data-image-loading-animation>
             <img id="{{ img_id }}"
-                 class="feature-row__image lazyload"
-                 data-src="{{ img_url }}"
-                 data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
-                 data-aspectratio="{{ section.settings.image.aspect_ratio }}"
-                 data-sizes="auto"
-                 alt="{{ section.settings.image.alt | escape }}">
+                class="feature-row__image lazyload"
+                data-src="{{ img_url }}"
+                data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                data-aspectratio="{{ section.settings.image.aspect_ratio }}"
+                data-sizes="auto"
+                alt="{{ section.settings.image.alt | escape }}">
           </div>
         </div>
 
@@ -25,14 +27,7 @@
         {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
       {% endif %}
     </div>
-  {% endcapture %}
-
-  <div class="feature-row">
-    {% if section.settings.layout == 'left' %}
-      {{ image_layout }}
-    {% endif %}
-
-    <div class="feature-row__item feature-row__text feature-row__text--{{ section.settings.layout }}">
+    <div class="columns small-12 medium-6 feature-row__text--{{ section.settings.layout }}">
       {% if section.settings.title != blank %}
         <h2 class="h3">{{ section.settings.title | escape }}</h2>
       {% endif %}
@@ -52,18 +47,17 @@
         {%- endcapture -%}
 
         <a href="{{ section.settings.button_link }}"
-          class="btn"
+          class="button"
           aria-label="{{ ariaLabel }}">
           {{- section.settings.button_label | escape -}}
         </a>
       {% endif %}
     </div>
-
-    {% if section.settings.layout == 'right' %}
-      {{ image_layout }}
-    {% endif %}
   </div>
-</div>
+
+</section>
+
+
 
 
 
